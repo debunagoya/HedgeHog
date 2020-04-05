@@ -6,6 +6,8 @@
 
 ## FUTURE PLAN
 - [ ] Google OAuth 
+- [ ] Function of Wall Paper Selection  
+- [ ] Function of Display Selection  
 
 ## USAGE
 ```
