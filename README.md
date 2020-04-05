@@ -1,4 +1,4 @@
-# Make Envirionment
+# Make Environment
 $ nodebrew install-binary latest
 $ nodebrew use v13.10.1
 $ echo 'export PATH=$PATH:$HOME/.nodebrew/current/bin' >> ~/.bashrc && source ~/.bashrc
