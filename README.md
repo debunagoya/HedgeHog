@@ -1,18 +1,19 @@
 # HedgeHog
 
 ## NEW FEATURE & BUGFIX
-- 2020/04/07
+- 2020/04/07 (v1.0.1)
   - Prohibit ZoomIn or ZoomOut in MainWindow
   - Extension of ToolBar
   - Modified CallBack Function
   - GoogleOauth Implementation
   - Modified Sync and Size of SystemLog
   - Added Logo in MainPage
-- 2020/04/05
+- 2020/04/05 (v1.0.0)
   - First Commit
 
 ## FUTURE PLAN
 - [x] Google OAuth 
+- [ ] Develop Server of Forecast
 - [ ] Function of Wall Paper Selection  
 - [ ] Function of Display Selection  
 
