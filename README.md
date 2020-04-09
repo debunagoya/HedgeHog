@@ -1,6 +1,9 @@
 # HedgeHog
 
 ## NEW FEATURE & BUGFIX
+- 2020/04/09 (v1.0.2)
+  - Modified Config Files
+  - Modified Bash Shell
 - 2020/04/07 (v1.0.1)
   - Prohibit ZoomIn or ZoomOut in MainWindow
   - Extension of ToolBar
@@ -13,7 +16,7 @@
 
 ## FUTURE PLAN
 - [x] Google OAuth 
-- [ ] Develop Server of Forecast
+- [x] Develop Server of Forecast
 - [ ] Function of Wall Paper Selection  
 - [ ] Function of Display Selection  
 
