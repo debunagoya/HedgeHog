@@ -1,6 +1,8 @@
 # HedgeHog
 
 ## NEW FEATURE & BUGFIX
+- 2020/04/11 (v1.0.3)
+  - Added Function of Reset
 - 2020/04/09 (v1.0.2)
   - Modified Config Files
   - Modified Bash Shell
