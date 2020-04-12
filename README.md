@@ -1,6 +1,9 @@
 # HedgeHog
 
 ## NEW FEATURE & BUGFIX
+- 2020/04/12 (v1.0.4)
+  - Fixed Bug of OAuth
+  - Added Function of Display Selection  
 - 2020/04/11 (v1.0.3)
   - Added Function of Reset
 - 2020/04/09 (v1.0.2)
@@ -20,7 +23,7 @@
 - [x] Google OAuth 
 - [x] Develop Server of Forecast
 - [ ] Function of Wall Paper Selection  
-- [ ] Function of Display Selection  
+- [x] Function of Display Selection  
 
 ## USAGE
 ```
