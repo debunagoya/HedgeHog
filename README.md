@@ -25,6 +25,9 @@
 - [ ] Function of Wall Paper Selection  
 - [x] Function of Display Selection  
 
+## LAYOUT
+(https://user-images.githubusercontent.com/51310989/79071380-64ac7e00-7d16-11ea-9be1-271b4224296f.png)
+
 ## USAGE
 ```
 nodebrew install-binary latest  
