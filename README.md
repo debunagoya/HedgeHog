@@ -43,4 +43,4 @@ sudo npm -d install electron-prebuilt
 This software is released under the MIT License, see LICENSE.
 
 ## AUTHOR
-[debunagoya] ( https://github.com/debunagoya )
+[debudagaya] ( https://github.com/debunagoya )
