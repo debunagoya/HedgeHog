@@ -26,8 +26,8 @@
 - [x] Function of Display Selection  
 
 ## LAYOUT
-<img src="https://user-images.githubusercontent.com/51310989/79071380-64ac7e00-7d16-11ea-9be1-271b4224296f.png">
-<img src="https://user-images.githubusercontent.com/51310989/79071420-9faeb180-7d16-11ea-8769-6178e07581c1.png">
+|<img src="https://user-images.githubusercontent.com/51310989/79071380-64ac7e00-7d16-11ea-9be1-271b4224296f.png">|<img src="https://user-images.githubusercontent.com/51310989/79071420-9faeb180-7d16-11ea-8769-6178e07581c1.png">|
+|:---------|------------------:|
 
 ## USAGE
 ```
