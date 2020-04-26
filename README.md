@@ -25,6 +25,7 @@
 - [x] Google OAuth 
 - [x] Develop Server of Forecast
 - [ ] Function of Wall Paper Selection  
+- [ ] Export Json and Import Json
 - [x] Function of Display Selection  
 
 ## LAYOUT
