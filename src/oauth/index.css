@@ -1,0 +1,33 @@
+body {
+  backgound-color : #f5f5f5;
+}
+.tab1 input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+}
+.tab1 .button {
+  margin-top : 7.5%;
+  text-align : center;
+}
+.tab1 .btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5ab4bd;
+  color: #FFF;
+  border-bottom: solid 4px #808080;
+  border-radius: 3px;
+}
+.tab1 .btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.tab1 .img {
+  display: flex;
+  justify-content: center;
+}

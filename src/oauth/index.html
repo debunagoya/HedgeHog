@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="index.css" />
+  <script type="text/javascript">
+  const {ipcRenderer} = window.native;
+  ipcRenderer.on('oauthrenderer1', (event, arg) => {
+    var res = arg.split(",");
+    if ( res[0] != '' && res[1] != ''){
+      if (res[0] == 'undefined') {
+        document.getElementById("tab1text1").value = '';
+      } else {
+        document.getElementById("tab1text1").value = res[0];
+      }
+      if (res[1] == 'undefined') {
+        document.getElementById("tab1text2").value = '';
+      } else {
+        document.getElementById("tab1text2").value = res[1];
+      }
+    }
+  });
+  </script>
+</head>
+<body>
+  <div class="tab1">
+    <form name="tab1">
+      <div class="img">
+        <img src="google.png" width=175px>
+      </div>
+      <p>
+        <span>Client ID</span>
+        <input type="text" name="tab1text1" id="tab1text1" value="">
+      </p>
+      <p>
+        <span>Client Secret</span>
+        <input type="text" name="tab1text2" id="tab1text2" value="">
+      </p>
+      <div class="button">
+        <p><a href="#" class="btn-square" type="button" onclick="tab1onclick()">OK</a></p>
+      </div>
+    </form>
+    <script>
+    function tab1onclick(){
+      var tab1str1 = document.tab1.tab1text1.value;
+      var tab1str2 = document.tab1.tab1text2.value;
+      ipcRenderer.send('oauthrequest1', tab1str1 + "," + tab1str2);
+    }
+    </script>
+  </div>
+</body>
+</html>

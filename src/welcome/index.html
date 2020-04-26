@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+<body>
+  <div class="animation">
+    <img src="icon512.png" class='animation-target' height="250px" onClick="onClick()">
+  </div>
+  <div class="title">
+    <span onClick="onClick()">Hedge Hog</span>
+  </div>
+  <script>
+    const {ipcRenderer} = window.native;
+    function onClick() {
+      ipcRenderer.send('welcomerequest1', 'ping');
+    }
+  </script>
+</body>
+</html>

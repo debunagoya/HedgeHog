@@ -1,0 +1,55 @@
+.tab5 .tab5analogclock {
+  display: flex;
+  justify-content: center;
+}
+.tab5 .tab5analogclock1 {
+  display: none;
+}
+.tab5 .tab5analogclock2 {
+  display: none;
+}
+.tab5 .tab5analogclock3 {
+  display: none;
+}
+.tab5 .analogclock1 {
+  position: absolute;
+}
+.tab5 #analogclock1 {
+  display: block;
+}
+.tab5 .analogclock2 {
+  position: absolute;
+}
+.tab5 #analogclock2 {
+  display: block;
+}
+.tab5 .analogclock3 {
+  position: absolute;
+}
+.tab5 #analogclock3 {
+  display: block;
+}
+.tab5 .tab5digitalclock {
+  display: flex;
+  justify-content: center;
+}
+.tab5 .digitalclock1 {
+  font-family: 'Changa One', cursive;
+  font-size: 2em;
+  display: none;
+}
+.tab5 .digitalclock2 {
+  font-family: 'Iceland', cursive;
+  font-size: 2em;
+  display: none;
+}
+.tab5 .digitalclock3 {
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-size: 2em;
+  display: none;
+}
+.tab5 .digitalclock4 {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 2em;
+  display: none;
+}

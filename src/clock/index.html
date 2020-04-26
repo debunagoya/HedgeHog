@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script type="text/javascript">
+  const {ipcRenderer} = window.native;
+  ipcRenderer.on('tab5renderer2', (event, arg) => {
+    var num = [];
+    for (var i=0; i<arg.length-2; i++){
+      num.push(String(arg[i+1]));
+    }
+    setInterval(function() {
+      var myDay = new Array("Sun","Mon","Thu","Wed","Thr","Fri","Sat");
+      var now  = new Date();
+      var year =  now.getFullYear(); // 年
+      var month = now.getMonth()+1; // 月
+      var date =  now.getDate(); // 日
+      var day =  now.getDay();
+      var hour = now.getHours(); // 時
+      var min  = now.getMinutes(); // 分
+      var sec  = now.getSeconds(); // 秒
+      if(hour < 10) { hour = "0" + hour; }
+      if(min < 10) { min = "0" + min; }
+      if(sec < 10) { sec = "0" + sec; }
+      var clock = '';
+      if(num[0]=='1'){ clock += year; }
+      if(num[1]=='1'){ if(num[0]=='1'){ clock += '/'; } ; clock += month; }
+      if(num[2]=='1'){ if(num[0]=='1'||num[1]=='1'){ clock += '/'; } ; clock += date }
+      if(num[3]=='1'){ if(num[0]=='1'||num[1]=='1'||num[2]=='1'){ clock += ' '; } ; clock += hour }
+      if(num[4]=='1'){ if(num[3]=='1'){ clock += ':'; } else if(num[0]=='1'||num[1]=='1'||num[2]=='1'){ clock += ' '; } ; clock += min }
+      if(num[5]=='1'){ if(num[3]=='1'||num[4]=='1'){ clock += ':'; } else if(num[0]=='1'||num[1]=='1'||num[2]=='1'){ clock += ' '; } ; clock += sec }
+      if(num[6]=='1'){ if(num[0]=='1'||num[1]=='1'||num[2]=='1'||num[3]=='1'||num[4]=='1'||num[5]=='1'){ clock += ' '; } ; clock += '(' + myDay[day] + ')'}
+      if (String(arg[0])=='1'){
+        switch(String(arg[8])){
+          case '1' :
+          document.getElementById("tab5analogclock1").style.display = "block";
+          break;
+          case '2' :
+          document.getElementById("tab5analogclock2").style.display = "block";
+          break;
+          case '3' :
+          document.getElementById("tab5analogclock3").style.display = "block";
+          break;
+        }
+      } else if (String(arg[0])=='2'){
+        switch(String(arg[8])){
+          case '1' :
+          document.getElementById("digitalclock1").style.display = "block";
+          break;
+          case '2' :
+          document.getElementById("digitalclock2").style.display = "block";
+          break;
+          case '3' :
+          document.getElementById("digitalclock3").style.display = "block";
+          break;
+          case '4' :
+          document.getElementById("digitalclock4").style.display = "block";
+          break;
+        }
+      }
+      document.getElementById('digitalclock1').innerHTML= clock.toLocaleString();
+      document.getElementById('digitalclock2').innerHTML= clock.toLocaleString();
+      document.getElementById('digitalclock3').innerHTML= clock.toLocaleString();
+      document.getElementById('digitalclock4').innerHTML= clock.toLocaleString();
+
+      var obj1 = document.getElementById("analogclock1_body");
+      document.getElementById("analogclock1").style.width = obj1.width + "px";
+      document.getElementById("analogclock1").style.height = obj1.height + "px";
+      var obj2 = document.getElementById("analogclock2_body");
+      document.getElementById("analogclock2").style.width = obj2.width + "px";
+      document.getElementById("analogclock2").style.height = obj2.height + "px";
+      var obj3 = document.getElementById("analogclock3_body");
+      document.getElementById("analogclock3").style.width = obj3.width + "px";
+      document.getElementById("analogclock3").style.height = obj3.height + "px";
+      var date,Hou,Min,Sec,hDeg,mDeg,sDeg;
+      date = new Date();
+      Hou = date.getHours();
+      Min = date.getMinutes();
+      Sec = date.getSeconds();
+      hDeg = (Hou % 12) * (360 / 12);
+      mDeg = Min * (360 / 60);
+      sDeg = Sec * (360 / 60);
+      hDeg += (Min / 60) * (360 / 12);
+      mDeg += (Sec / 60) * (360 / 60);
+      if (Hou < 10) Hou = "0" + Hou;
+      if (Min < 10) Min = "0" + Min;
+      if (Sec < 10) Sec = "0" + Sec;
+      document.getElementById("analogclock1_short").style.transform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock1_short").style.MozTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock1_short").style.WebkitTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock1_short").style.msTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock1_long").style.transform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock1_long").style.MozTransform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock1_long").style.WebkitTransform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock1_long").style.msTransform = "rotate(" + mDeg + "deg)";
+
+      document.getElementById("analogclock2_short").style.transform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock2_short").style.MozTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock2_short").style.WebkitTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock2_short").style.msTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock2_long").style.transform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock2_long").style.MozTransform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock2_long").style.WebkitTransform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock2_long").style.msTransform = "rotate(" + mDeg + "deg)";
+
+      document.getElementById("analogclock3_short").style.transform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock3_short").style.MozTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock3_short").style.WebkitTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock3_short").style.msTransform = "rotate(" + hDeg + "deg)";
+      document.getElementById("analogclock3_long").style.transform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock3_long").style.MozTransform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock3_long").style.WebkitTransform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock3_long").style.msTransform = "rotate(" + mDeg + "deg)";
+      document.getElementById("analogclock3_sec").style.transform = "rotate(" + sDeg + "deg)";
+      document.getElementById("analogclock3_sec").style.MozTransform = "rotate(" + sDeg + "deg)";
+      document.getElementById("analogclock3_sec").style.WebkitTransform = "rotate(" + sDeg + "deg)";
+      document.getElementById("analogclock3_sec").style.msTransform = "rotate(" + sDeg + "deg)";
+    }, 1000);
+  });
+  </script>
+</head>
+<body>
+  <div class="tab5">
+    <div class="tab5analogclock">
+      <div  class="tab5analogclock1" id="tab5analogclock1">
+        <div id="analogclock1">
+          <img src="analog1body.png"  width="150" height="150" id="analogclock1_body"  class="analogclock1">
+          <img src="analog1short.png" width="150" height="150" id="analogclock1_short" class="analogclock1">
+          <img src="analog1long.png"  width="150" height="150" id="analogclock1_long"  class="analogclock1">
+        </div>
+      </div>
+      <div  class="tab5analogclock2" id="tab5analogclock2">
+        <div id="analogclock2">
+          <img src="analog2body.png"  width="150" height="150" id="analogclock2_body"  class="analogclock2">
+          <img src="analog2short.png" width="150" height="150" id="analogclock2_short" class="analogclock2">
+          <img src="analog2long.png"  width="150" height="150" id="analogclock2_long"  class="analogclock2">
+        </div>
+      </div>
+      <div  class="tab5analogclock3" id="tab5analogclock3">
+        <div id="analogclock3">
+          <img src="analog3body.png"  width="150" height="150" id="analogclock3_body"  class="analogclock3">
+          <img src="analog3short.png" width="150" height="150" id="analogclock3_short" class="analogclock3">
+          <img src="analog3long.png"  width="150" height="150" id="analogclock3_long"  class="analogclock3">
+          <img src="analog3sec.png"   width="150" height="150" id="analogclock3_sec"   class="analogclock3">
+        </div>
+      </div>
+    </div>
+    <div class="tab5digitalclock">
+      <div id="digitalclock1" class="digitalclock1"></div>
+    </div>
+    <div class="tab5digitalclock">
+      <div id="digitalclock2" class="digitalclock2"></div>
+    </div>
+    <div class="tab5digitalclock">
+      <div id="digitalclock3" class="digitalclock3"></div>
+    </div>
+    <div class="tab5digitalclock">
+      <div id="digitalclock4" class="digitalclock4"></div>
+    </div>
+  </div>
+</body>
+</html>

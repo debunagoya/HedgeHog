@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script type="text/javascript">
+  const {ipcRenderer} = window.native;
+  ipcRenderer.on('tab6renderer2', (event, arg) => {
+    var res = arg.split(',');
+    if (res[1] != 'false'){
+      setInterval(function() {
+        var myDay = new Array("Sun","Mon","Thu","Wed","Thr","Fri","Sat");
+        var now  = new Date();
+        var will = new Date(res[1]);
+        if ( will.getTime() > now.getTime() ){
+          var diff = will.getTime() - now.getTime();
+        } else {
+          var diff = now.getTime() - will.getTime();
+        }
+        // var year = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+        // diff =  Math.floor(diff % (1000 * 60 * 60 * 24 * 365));
+        var day  = Math.floor(diff / (1000 * 60 * 60 * 24));
+        diff =  Math.floor(diff % (1000 * 60 * 60 * 24));
+        var hour = Math.floor(diff / (1000 * 60 * 60));
+        diff =  Math.floor(diff % (1000 * 60 * 60));
+        var min  = Math.floor(diff / (1000 * 60));
+        diff =  Math.floor(diff % (1000 * 60));
+        var sec  = Math.floor(diff / (1000));
+        diff =  Math.floor(diff % (1000));
+        if (day < 10) { day = '0' + day }
+        if (hour < 10) { hour = '0' + hour }
+        if (min < 10) { min = '0' + min }
+        if (sec < 10) { sec = '0' + sec }
+        var clock = day + ' : ' + hour + ' : ' + min + ' : ' + sec;
+        document.getElementById('digitalclock1').innerHTML= clock.toLocaleString();
+      }, 1000);
+    }
+    document.getElementById('body').style.backgroundColor = res[4];
+    document.getElementById('footer').style.backgroundColor = res[4];
+  });
+</script>
+</head>
+<body>
+  <div class="editor fix-height">
+    <div class="main fix-height">
+      <textarea id="body" class="fix-height fix-width"></textarea>
+    </div>
+    <footer class="status fix-width" id='footer'>
+      <div class="tab6digitalclock">
+        <div id="digitalclock1" class="digitalclock1"></div>
+      </div>
+    </footer>
+  </div>
+  <script type="text/javascript">
+  var textarea = $("#body");
+  textarea.ready(function(){
+    textarea.val(localStorage.getItem("body"));
+  });
+  textarea.keyup(function(){
+    var value = textarea.val();
+    localStorage.setItem("body", value);
+  });
+  </script>
+</body>
+</html>

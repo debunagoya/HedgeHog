@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+  google.charts.load('current', {'packages':['gauge']});
+  google.charts.setOnLoadCallback(drawChart);
+  const {ipcRenderer} = window.native;
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Label', 'Value'],
+      ['CPU', 0]
+    ]);
+    var options = {
+      width: 270, height: 270,
+      redFrom: 90, redTo: 100,
+      yellowFrom:75, yellowTo: 90,
+      minorTicks: 5
+    };
+    var chart = new google.visualization.Gauge(document.getElementById('preview'));
+    chart.draw(data, options);
+    setInterval(function() {
+      data.setValue(0, 1, 60 + Math.round(20 * Math.random()));
+      chart.draw(data, options);
+    }, 3000);
+  }
+  </script>
+  <script type="text/javascript">
+  var num = ['0','0','0','0','0','0','0'];
+  function clock() {
+    var myDay = new Array("Sun","Mon","Thu","Wed","Thr","Fri","Sat");
+    var now  = new Date();
+    var year =  now.getFullYear(); // 年
+    var month = now.getMonth()+1; // 月
+    var date =  now.getDate(); // 日
+    var day =  now.getDay();
+    var hour = now.getHours(); // 時
+    var min  = now.getMinutes(); // 分
+    var sec  = now.getSeconds(); // 秒
+    if(hour < 10) { hour = "0" + hour; }
+    if(min < 10) { min = "0" + min; }
+    if(sec < 10) { sec = "0" + sec; }
+    var clock = '';
+    if(num[0]=='1'){ clock += year; }
+    if(num[1]=='1'){ if(num[0]=='1'){ clock += '/'; } ; clock += month; }
+    if(num[2]=='1'){ if(num[0]=='1'||num[1]=='1'){ clock += '/'; } ; clock += date }
+    if(num[3]=='1'){ if(num[0]=='1'||num[1]=='1'||num[2]=='1'){ clock += ' '; } ; clock += hour }
+    if(num[4]=='1'){ if(num[3]=='1'){ clock += ':'; }else if(num[0]=='1'||num[1]=='1'||num[2]=='1'){ clock += ' '; } ; clock += min }
+    if(num[5]=='1'){ if(num[3]=='1'||num[4]=='1'){ clock += ':'; } else if(num[0]=='1'||num[1]=='1'||num[2]=='1'){ clock += ' '; } ; clock += sec }
+    if(num[6]=='1'){ if(num[0]=='1'||num[1]=='1'||num[2]=='1'||num[3]=='1'||num[4]=='1'||num[5]=='1'){ clock += ' '; } ; clock += '(' + myDay[day] + ')'}
+    document.getElementById('digitalclock1').innerHTML= clock.toLocaleString();
+    document.getElementById('digitalclock2').innerHTML= clock.toLocaleString();
+    document.getElementById('digitalclock3').innerHTML= clock.toLocaleString();
+    document.getElementById('digitalclock4').innerHTML= clock.toLocaleString();
+
+    var obj1 = document.getElementById("analogclock1_body");
+    document.getElementById("analogclock1").style.width = obj1.width + "px";
+    document.getElementById("analogclock1").style.height = obj1.height + "px";
+    var obj2 = document.getElementById("analogclock2_body");
+    document.getElementById("analogclock2").style.width = obj2.width + "px";
+    document.getElementById("analogclock2").style.height = obj2.height + "px";
+    var obj3 = document.getElementById("analogclock3_body");
+    document.getElementById("analogclock3").style.width = obj3.width + "px";
+    document.getElementById("analogclock3").style.height = obj3.height + "px";
+    var date,Hou,Min,Sec,hDeg,mDeg,sDeg;
+    date = new Date();
+    Hou = date.getHours();
+    Min = date.getMinutes();
+    Sec = date.getSeconds();
+    hDeg = (Hou % 12) * (360 / 12);
+    mDeg = Min * (360 / 60);
+    sDeg = Sec * (360 / 60);
+    hDeg += (Min / 60) * (360 / 12);
+    mDeg += (Sec / 60) * (360 / 60);
+    if (Hou < 10) Hou = "0" + Hou;
+    if (Min < 10) Min = "0" + Min;
+    if (Sec < 10) Sec = "0" + Sec;
+    document.getElementById("analogclock1_short").style.transform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock1_short").style.MozTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock1_short").style.WebkitTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock1_short").style.msTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock1_long").style.transform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock1_long").style.MozTransform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock1_long").style.WebkitTransform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock1_long").style.msTransform = "rotate(" + mDeg + "deg)";
+    // document.getElementById("analogclock1_sec").style.transform = "rotate(" + sDeg + "deg)";
+    // document.getElementById("analogclock1_sec").style.MozTransform = "rotate(" + sDeg + "deg)";
+    // document.getElementById("analogclock1_sec").style.WebkitTransform = "rotate(" + sDeg + "deg)";
+    // document.getElementById("analogclock1_sec").style.msTransform = "rotate(" + sDeg + "deg)";
+    document.getElementById("analogclock2_short").style.transform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock2_short").style.MozTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock2_short").style.WebkitTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock2_short").style.msTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock2_long").style.transform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock2_long").style.MozTransform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock2_long").style.WebkitTransform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock2_long").style.msTransform = "rotate(" + mDeg + "deg)";
+    // document.getElementById("analogclock2_sec").style.transform = "rotate(" + sDeg + "deg)";
+    // document.getElementById("analogclock2_sec").style.MozTransform = "rotate(" + sDeg + "deg)";
+    // document.getElementById("analogclock2_sec").style.WebkitTransform = "rotate(" + sDeg + "deg)";
+    // document.getElementById("analogclock2_sec").style.msTransform = "rotate(" + sDeg + "deg)";
+    document.getElementById("analogclock3_short").style.transform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock3_short").style.MozTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock3_short").style.WebkitTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock3_short").style.msTransform = "rotate(" + hDeg + "deg)";
+    document.getElementById("analogclock3_long").style.transform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock3_long").style.MozTransform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock3_long").style.WebkitTransform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock3_long").style.msTransform = "rotate(" + mDeg + "deg)";
+    document.getElementById("analogclock3_sec").style.transform = "rotate(" + sDeg + "deg)";
+    document.getElementById("analogclock3_sec").style.MozTransform = "rotate(" + sDeg + "deg)";
+    document.getElementById("analogclock3_sec").style.WebkitTransform = "rotate(" + sDeg + "deg)";
+    document.getElementById("analogclock3_sec").style.msTransform = "rotate(" + sDeg + "deg)";
+
+    window.setTimeout("clock()", 1000);
+  }
+  window.onload = clock;
+  </script>
+</head>
+<body>
+  <div class="tabs">
+    <input id="tab1" type="radio" name="tab_item" checked>
+    <label class="tab_item" for="tab1">Browser</label>
+    <input id="tab2" type="radio" name="tab_item">
+    <label class="tab_item" for="tab2">Monitor</label>
+    <input id="tab3" type="radio" name="tab_item">
+    <label class="tab_item" for="tab3">GitHub</label>
+    <input id="tab4" type="radio" name="tab_item">
+    <label class="tab_item" for="tab4">Forecast</label>
+
+    <input id="tab5" type="radio" name="tab_item">
+    <label class="tab_item" for="tab5">Clock</label>
+    <input id="tab6" type="radio" name="tab_item">
+    <label class="tab_item" for="tab6">Postit</label>
+    <!-- <input id="tab7" type="radio" name="tab_item">
+    <label class="tab_item" for="tab7">App</label> -->
+    <!-- <input id="tab8" type="radio" name="tab_item">
+    <label class="tab_item" for="tab8">Setting</label> -->
+
+    <div class="tab_content" id="tab1_content">
+      <div class="tab_content_description">
+        <div class="tab1">
+          <div class="image1">
+            <button type="button" id="btn1"><img src="twitter.png"   style="height:50px;"></button>
+            <button type="button" id="btn2"><img src="slack.png"     style="height:50px;"></button>
+            <button type="button" id="btn3"><img src="outlook.png"   style="height:50px;"></button>
+            <button type="button" id="btn4"><img src="tweetdeck.png" style="height:50px;"></button>
+            <button type="button" id="btn5"><img src="abematv.png"  style="height:50px;"></button>
+            <button type="button" id="btn6"><img src="feedly.png"   style="height:50px;"></button>
+            <button type="button" id="btn7"><img src="facebook.png" style="height:50px;"></button>
+            <button type="button" id="btn8"><img src="zoom.png" style="height:50px;"></button>
+            <button type="button" id="btn9"><img src="evernote.png" style="height:50px;"></button>
+            <button type="button" id="btn10"><img src="pocket.png" style="height:50px;"></button>
+          </div>
+          <div class="image2">
+            <button type="button" id="btn11"><img src="trello.png"   style="height:50px;"></button>
+            <button type="button" id="btn12"><img src="timetree.png" style="height:50px;"></button>
+            <button type="button" id="btn13"><img src="netflix.png" style="height:50px;"></button>
+            <button type="button" id="btn14"><img src="qiita.png"   style="height:50px;"></button>
+            <button type="button" id="btn15"><img src="github.png"   style="height:50px;"></button>
+            <button type="button" id="btn16"><img src="amazon.png" style="height:50px;"></button>
+            <button type="button" id="btn17"><img src="instagram.png" style="height:50px;"></button>
+            <button type="button" id="btn18"><img src="slideshare.png" style="height:50px;"></button>
+            <button type="button" id="btn19"><img src="onedrive.png" style="height:50px;"></button>
+            <button type="button" id="btn20"><img src="dropbox.png" style="height:50px;"></button>
+          </div>
+          <div class="image3">
+            <button type="button" id="btn21"><img src="chatwork.png" style="height:50px;"></button>
+            <button type="button" id="btn22"><img src="freee.png" style="height:50px;"></button>
+            <button type="button" id="btn23"><img src="youtube.png" style="height:50px;"></button>
+            <button type="button" id="btn24"><img src="gmail.png"  style="height:50px;"></button>
+            <button type="button" id="btn25"><img src="gcalendar.png"  style="height:50px;"></button>
+            <button type="button" id="btn26"><img src="gdrive.png"  style="height:50px;"></button>
+            <button type="button" id="btn27"><img src="gsheet.png"  style="height:50px;"></button>
+            <button type="button" id="btn28"><img src="gdocs.png"  style="height:50px;"></button>
+            <button type="button" id="btn29"><img src="gform.png"  style="height:50px;"></button>
+            <button type="button" id="btn30"><img src="gslide.png"  style="height:50px;"></button>
+          </div>
+          <form name="tab1">
+            <!-- <p>
+              <span>Name</span>
+              <input type="text" name="tab1text1" id="tab1text1" value="" placeholder="twitter"/>
+            </p> -->
+            <p>
+              <span>URL</span>
+              <input type="text" name="tab2text2" id="tab2text2" value="" placeholder="https://twitter.com/"/>
+            </p>
+            <div class="checkbox1">
+              <div class="tab1box1">
+                <form>
+                  <label>
+                    <input type="checkbox" id="tab1box1" value="">
+                    <span> Mute</span>
+                  </label>
+                </form>
+              </div>
+              <!-- <div class="tab1box2">
+                <form>
+                  <label>
+                    <input type="checkbox" id="tab1box2" value="" onClick="tab1oauth()">
+                    <span> Google Login</span>
+                  </label>
+                </form>
+              </div> -->
+            </div>
+            <div class="button">
+              <p><a href="#" class="btn-square" type="button" onclick="tab1onclick()">OK</a></p>
+            </div>
+          </form>
+          <script type="text/javascript">
+          $(document).ready(function () {
+            $("#btn1").on('click', function () {
+              $('#tab2text2').val('https://twitter.com/');
+            });
+            $("#btn2").on('click', function () {
+              $('#tab2text2').val('https://app.slack.com/');
+            });
+            $("#btn3").on('click', function () {
+              $('#tab2text2').val('https://outlook.office.com/');
+            });
+            $("#btn4").on('click', function () {
+              $('#tab2text2').val('http://tweetdeck.twitter.com');
+            });
+            $("#btn5").on('click', function () {
+              $('#tab2text2').val('https://abema.tv/now-on-air/abema-news');
+            });
+            $("#btn6").on('click', function () {
+              $('#tab2text2').val('https://feedly.com/');
+            });
+            $("#btn7").on('click', function () {
+              $('#tab2text2').val('https://ja-jp.facebook.com/');
+            });
+            $("#btn8").on('click', function () {
+              $('#tab2text2').val('https://zoom.us/jp-jp/meetings.html');
+            });
+            $("#btn9").on('click', function () {
+              $('#tab2text2').val('https://evernote.com/intl/jp');
+            });
+            $("#btn10").on('click', function () {
+              $('#tab2text2').val('https://getpocket.com/');
+            });
+
+            $("#btn11").on('click', function () {
+              $('#tab2text2').val('https://trello.com');
+            });
+            $("#btn12").on('click', function () {
+              $('#tab2text2').val('https://timetreeapp.com/intl/ja/');
+            });
+            $("#btn13").on('click', function () {
+              $('#tab2text2').val('https://www.netflix.com/jp/');
+            });
+            $("#btn14").on('click', function () {
+              $('#tab2text2').val('https://qiita.com/');
+            });
+            $("#btn15").on('click', function () {
+              $('#tab2text2').val('https://github.com/');
+            });
+            $("#btn16").on('click', function () {
+              $('#tab2text2').val('https://www.amazon.co.jp/');
+            });
+            $("#btn17").on('click', function () {
+              $('#tab2text2').val('https://www.instagram.com/');
+            });
+            $("#btn18").on('click', function () {
+              $('#tab2text2').val('https://www.slideshare.net/');
+            });
+            $("#btn19").on('click', function () {
+              $('#tab2text2').val('https://onedrive.live.com/');
+            });
+            $("#btn20").on('click', function () {
+              $('#tab2text2').val('https://www.dropbox.com/');
+            });
+
+            $("#btn21").on('click', function () {
+              $('#tab2text2').val('https://www.chatwork.com/');
+            });
+            $("#btn22").on('click', function () {
+              $('#tab2text2').val('https://www.freee.co.jp/');
+            });
+            $("#btn23").on('click', function () {
+              $('#tab2text2').val('https://www.youtube.com/');
+            });
+            $("#btn24").on('click', function () {
+              $('#tab2text2').val('https://accounts.google.com/ServiceLogin?service=mail');
+            });
+            $("#btn25").on('click', function () {
+              $('#tab2text2').val('https://calendar.google.com/');
+            });
+            $("#btn26").on('click', function () {
+              $('#tab2text2').val('https://drive.google.com/drive/');
+            });
+            $("#btn27").on('click', function () {
+              $('#tab2text2').val('https://docs.google.com/spreadsheets/');
+            });
+            $("#btn28").on('click', function () {
+              $('#tab2text2').val('https://docs.google.com/document/');
+            });
+            $("#btn29").on('click', function () {
+              $('#tab2text2').val('https://docs.google.com/forms/');
+            });
+            $("#btn30").on('click', function () {
+              $('#tab2text2').val('https://docs.google.com/presentation/');
+            });
+          })
+          </script>
+          <script>
+          function tab1onclick(){
+            var tab1str2 = document.tab1.tab2text2.value;
+            if (tab1str2 == 'https://www.youtube.com/'){
+              var tab1str1 = 'youtube';
+            } else if (tab1str2 == 'https://accounts.google.com/ServiceLogin?service=mail'){
+              var tab1str1 = 'gmail';
+            } else if (tab1str2 == 'https://calendar.google.com/'){
+              var tab1str1 = 'gcalendar';
+            } else if (tab1str2 == 'https://drive.google.com/drive/'){
+              var tab1str1 = 'gdrive';
+            } else if (tab1str2 == 'https://docs.google.com/spreadsheets/'){
+              var tab1str1 = 'gsheet';
+            } else if (tab1str2 == 'https://docs.google.com/document/'){
+              var tab1str1 = 'gdocs';
+            } else if (tab1str2 == 'https://docs.google.com/forms/'){
+              var tab1str1 = 'gform';
+            } else if (tab1str2 == 'https://docs.google.com/presentation/'){
+              var tab1str1 = 'gslide';
+            } else {
+              var tab1str1 = 'null';
+            }
+            if($('input[id=tab1box1]').prop('checked')){
+              var tab1str3 = 'true';
+            } else {
+              var tab1str3 = 'false';
+            }
+            ipcRenderer.send('tab1request1', tab1str1 + "," + tab1str2 + "," + tab1str3);
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" id="tab2_content">
+      <div class="tab_content_description">
+        <div class="tab2">
+          <div class="layout">
+            <div class="preview" >
+              <div id="preview" style="width: 270px; height: 270px;"></div>
+              <div class="text">Sample</div>
+            </div>
+            <div class="cpu">
+              <form name="tab2">
+                <label>
+                  <input type="checkbox" id="tab2box1">
+                  <span> CPU</span>
+                </label>
+                <label>
+                  <input type="checkbox" id="tab2box2">
+                  <span> Memory</span>
+                </label>
+                <label>
+                  <input type="checkbox" id="tab2box3">
+                  <span> Battery</span>
+                </label>
+                <label>
+                  <input type="checkbox" id="tab2box4">
+                  <span> Temperature</span>
+                </label>
+              </form>
+            </div>
+          </div>
+          <div class="button">
+            <p><a href="#" class="btn-square" type="button" onclick="tab2onclick()">OK</a></p>
+          </div>
+          <script>
+          function tab2onclick(){
+            var tab2str1 = document.tab2.tab2box1.checked;
+            var tab2str2 = document.tab2.tab2box2.checked;
+            var tab2str3 = document.tab2.tab2box3.checked;
+            var tab2str4 = document.tab2.tab2box4.checked;
+            ipcRenderer.send('tab2request1', tab2str4 + "," + tab2str3 + "," + tab2str2 + "," + tab2str1);
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" id="tab3_content">
+      <div class="tab_content_description">
+        <div class="tab3">
+          <div class="github">
+            <img src="https://grass-graph.moshimo.works/images/debudagaya.png" width="100%" height="100%">
+            <div class="text">Sample</div>
+          </div>
+          <form name="tab3">
+            <p class="account">
+              <span>GitHub Account</span>
+              <input type="text" name="name" id="tab3text1" value="" placeholder="debudagaya"/>
+            </p>
+            <div class="button">
+              <p><a href="#" class="btn-square" type="button" onclick="tab3onclick()">OK</a></p>
+            </div>
+          </form>
+          <script>
+          function tab3onclick(){
+            var tab3str1 = document.tab3.tab3text1.value;
+            ipcRenderer.send('tab3request1', tab3str1);
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" id="tab4_content">
+      <div class="tab_content_description">
+        <div class="tab4">
+          <div class="japan_map">
+            <img src="map.png" alt="日本地図">
+            <span class="area_btn area1" data-area="1">北海道・東北</span>
+            <span class="area_btn area2" data-area="2">関東</span>
+            <span class="area_btn area3" data-area="3">中部</span>
+            <span class="area_btn area4" data-area="4">近畿</span>
+            <span class="area_btn area5" data-area="5">中国・四国</span>
+            <span class="area_btn area6" data-area="6">九州・沖縄</span>
+            <div class="area_overlay"></div>
+            <div class="pref_area">
+              <div class="pref_list" data-list="1">
+                <div data-id="hokkaido">北海道</div>
+                <div data-id="aomori">青森県</div>
+                <div data-id="iwate">岩手県</div>
+                <div data-id="miyagi">宮城県</div>
+                <div data-id="akita">秋田県</div>
+                <div data-id="yamagata">山形県</div>
+                <div data-id="fukushima">福島県</div>
+                <div></div>
+              </div>
+              <div class="pref_list" data-list="2">
+                <div data-id="ibaraki">茨城県</div>
+                <div data-id="tochigi">栃木県</div>
+                <div data-id="gunma">群馬県</div>
+                <div data-id="saitama">埼玉県</div>
+                <div data-id="chiba">千葉県</div>
+                <div data-id="tokyo">東京都</div>
+                <div data-id="kanagawa">神奈川県</div>
+                <div></div>
+              </div>
+              <div class="pref_list" data-list="3">
+                <div data-id="niigata">新潟県‎</div>
+                <div data-id="toyama">富山県‎</div>
+                <div data-id="ishikawa">石川県‎</div>
+                <div data-id="fukui">福井県‎</div>
+                <div data-id="yamanashi">山梨県‎</div>
+                <div data-id="nagano">長野県‎</div>
+                <div data-id="gifu">岐阜県</div>
+                <div data-id="shizuoka">静岡県</div>
+                <div data-id="aichi">愛知県‎</div>
+                <div></div>
+              </div>
+              <div class="pref_list" data-list="4">
+                <div data-id="mie">三重県</div>
+                <div data-id="siga">滋賀県</div>
+                <div data-id="kyoto">京都府</div>
+                <div data-id="osaka">大阪府</div>
+                <div data-id="hyogo">兵庫県</div>
+                <div data-id="nara">奈良県</div>
+                <div data-id="wakayama">和歌山県</div>
+                <div></div>
+              </div>
+              <div class="pref_list" data-list="5">
+                <div data-id="tottori">鳥取県</div>
+                <div data-id="shimane">島根県</div>
+                <div data-id="okayama">岡山県</div>
+                <div data-id="hiroshima">広島県</div>
+                <div data-id="yamaguchi">山口県</div>
+                <div data-id="tokushima">徳島県</div>
+                <div data-id="kagawa">香川県</div>
+                <div data-id="ehime">愛媛県</div>
+                <div data-id="kochi">高知県</div>
+                <div></div>
+              </div>
+              <div class="pref_list" data-list="6">
+                <div data-id="fukuoka">福岡県</div>
+                <div data-id="saga">佐賀県</div>
+                <div data-id="nagasaki">長崎県</div>
+                <div data-id="kumamoto">熊本県</div>
+                <div data-id="oita">大分県</div>
+                <div data-id="miyazaki">宮崎県</div>
+                <div data-id="kagoshima">鹿児島県</div>
+                <div data-id="okinawa">沖縄県</div>
+              </div>
+            </div>
+          </div>
+          <script>
+          $(function(){
+            $('.area_btn').click(function(){
+              $('.area_overlay').show();
+              $('.pref_area').show();
+              var area = $(this).data('area');
+              $('[data-list]').hide();
+              $('[data-list="' + area + '"]').show();
+            });
+            $('.area_overlay').click(function(){
+              prefReset();
+            });
+            $('.pref_list [data-id]').click(function(){
+              if($(this).data('id')){
+                var id = $(this).data('id');
+                ipcRenderer.send('tab4request1', id);
+                prefReset();
+              }
+            });
+            function prefReset(){
+              $('[data-list]').hide();
+              $('.pref_area').hide();
+              $('.area_overlay').hide();
+            }
+          });
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" id="tab5_content">
+      <div class="tab_content_description">
+        <div class="tab5">
+          <div class="tab5analogclock">
+            <div  class="tab5analogclock1">
+              <div id="analogclock1">
+                <img src="analog1body.png"  width="150" height="150" id="analogclock1_body"  class="analogclock1">
+                <img src="analog1short.png" width="150" height="150" id="analogclock1_short" class="analogclock1">
+                <img src="analog1long.png"  width="150" height="150" id="analogclock1_long"  class="analogclock1">
+                <!-- <img src="analog1sec.png"   width="150" height="150" id="analogclock_sec"   class="analogclock"> -->
+                <!-- <img src="analog1cover.png" width="150" height="150" id="image_cover"       class="analogclock"> -->
+              </div>
+            </div>
+            <div  class="tab5analogclock2">
+              <div id="analogclock2">
+                <img src="analog2body.png"  width="150" height="150" id="analogclock2_body"  class="analogclock2">
+                <img src="analog2short.png" width="150" height="150" id="analogclock2_short" class="analogclock2">
+                <img src="analog2long.png"  width="150" height="150" id="analogclock2_long"  class="analogclock2">
+                <!-- <img src="analog1sec.png"   width="150" height="150" id="analogclock_sec"   class="analogclock"> -->
+                <!-- <img src="analog1cover.png" width="150" height="150" id="image_cover"       class="analogclock"> -->
+              </div>
+            </div>
+            <div  class="tab5analogclock3">
+              <div id="analogclock3">
+                <img src="analog3body.png"  width="150" height="150" id="analogclock3_body"  class="analogclock3">
+                <img src="analog3short.png" width="150" height="150" id="analogclock3_short" class="analogclock3">
+                <img src="analog3long.png"  width="150" height="150" id="analogclock3_long"  class="analogclock3">
+                <img src="analog3sec.png"   width="150" height="150" id="analogclock3_sec"   class="analogclock3">
+                <!-- <img src="analog1cover.png" width="150" height="150" id="image_cover"       class="analogclock"> -->
+              </div>
+            </div>
+          </div>
+          <div class="tab5digitalclock">
+            <div id="digitalclock1" class="digitalclock1"></div>
+          </div>
+          <div class="tab5digitalclock">
+            <div id="digitalclock2" class="digitalclock2"></div>
+          </div>
+          <div class="tab5digitalclock">
+            <div id="digitalclock3" class="digitalclock3"></div>
+          </div>
+          <div class="tab5digitalclock">
+            <div id="digitalclock4" class="digitalclock4"></div>
+          </div>
+          <div class="checkbox1">
+            <form name="tab5">
+              <div class="tab5box1">
+                <label>
+                  <input type="radio" name="tab5btn1" id="tab5box1">
+                  <span> Analog</span>
+                </label>
+              </div>
+              <div class="tab5box1">
+                <label>
+                  <input type="radio" name="tab5btn1" id="tab5box2">
+                  <span> Digital</span>
+                </label>
+              </div>
+            </form>
+          </div>
+          <script>
+          $(function() {
+            $('input[name="tab5btn1"]:radio').change( function() {
+              if($('input[id=tab5box1]').prop('checked')){
+                $('.tab5box2').fadeOut();
+                $('.tab5box3').fadeOut();
+                $('.tab5box4').fadeIn();
+                $('.digitalclock1').fadeOut();
+                $('.digitalclock2').fadeOut();
+                $('.digitalclock3').fadeOut();
+                $('.digitalclock4').fadeOut();
+                if($('input[id=tab5box14]').prop('checked')){
+                  $('.tab5analogclock1').fadeIn();
+                } else if ($('input[id=tab5box15]').prop('checked')) {
+                  $('.tab5analogclock2').fadeIn();
+                } else if ($('input[id=tab5box16]').prop('checked')) {
+                  $('.tab5analogclock3').fadeIn();
+                }
+              } else if ($('input[id=tab5box2]').prop('checked')) {
+                $('.tab5analogclock1').fadeOut();
+                $('.tab5analogclock2').fadeOut();
+                $('.tab5analogclock3').fadeOut();
+                $('.tab5box2').fadeIn();
+                $('.tab5box3').fadeIn();
+                $('.tab5box4').fadeOut();
+                if($('input[id=tab5box10]').prop('checked')){
+                  $('.digitalclock1').fadeIn();
+                } else if ($('input[id=tab5box11]').prop('checked')) {
+                  $('.digitalclock2').fadeIn();
+                } else if ($('input[id=tab5box12]').prop('checked')) {
+                  $('.digitalclock3').fadeIn();
+                } else if ($('input[id=tab5box13]').prop('checked')) {
+                  $('.digitalclock4').fadeIn();
+                }
+              }
+            });
+          });
+          </script>
+          <div class="checkbox4">
+            <form name="tab5">
+              <div class="tab5box4">
+                <label>
+                  <input type="radio" name="tab5btn4" id="tab5box14">
+                  <span> Type1</span>
+                </label>
+              </div>
+              <div class="tab5box4">
+                <label>
+                  <input type="radio" name="tab5btn4" id="tab5box15">
+                  <span> Type2</span>
+                </label>
+              </div>
+              <div class="tab5box4">
+                <label>
+                  <input type="radio" name="tab5btn4" id="tab5box16">
+                  <span> Type3</span>
+                </label>
+              </div>
+            </form>
+          </div>
+          <script>
+          $(function() {
+            $('input[name="tab5btn4"]:radio').change( function() {
+              if($('input[id=tab5box14]').prop('checked')){
+                $('.tab5analogclock2').fadeOut();
+                $('.tab5analogclock3').fadeOut();
+                $('.tab5analogclock1').fadeIn();
+              } else if ($('input[id=tab5box15]').prop('checked')) {
+                $('.tab5analogclock1').fadeOut();
+                $('.tab5analogclock3').fadeOut();
+                $('.tab5analogclock2').fadeIn();
+              } else if ($('input[id=tab5box16]').prop('checked')) {
+                $('.tab5analogclock1').fadeOut();
+                $('.tab5analogclock2').fadeOut();
+                $('.tab5analogclock3').fadeIn();
+              }
+            });
+          });
+          </script>
+          <div class="checkbox2">
+            <form name="tab5">
+              <div class="tab5box2">
+                <label>
+                  <input type="checkbox" name='tab5btn2' id="tab5box3">
+                  <span> yyyy</span>
+                </label>
+              </div>
+              <div class="tab5box2">
+                <label>
+                  <input type="checkbox" name='tab5btn2' id="tab5box4">
+                  <span> MM</span>
+                </label>
+              </div>
+              <div class="tab5box2">
+                <label>
+                  <input type="checkbox" name='tab5btn2' id="tab5box5">
+                  <span> dd</span>
+                </label>
+              </div>
+              <div class="tab5box2">
+                <label>
+                  <input type="checkbox" name='tab5btn2' id="tab5box6">
+                  <span> H</span>
+                </label>
+              </div>
+              <div class="tab5box2">
+                <label>
+                  <input type="checkbox" name='tab5btn2' id="tab5box7">
+                  <span> mm</span>
+                </label>
+              </div>
+              <div class="tab5box2">
+                <label>
+                  <input type="checkbox" name='tab5btn2' id="tab5box8">
+                  <span> ss</span>
+                </label>
+              </div>
+              <div class="tab5box2">
+                <label>
+                  <input type="checkbox" name='tab5btn2' id="tab5box9">
+                  <span> EE</span>
+                </label>
+              </div>
+            </form>
+          </div>
+          <script>
+          $(function(){
+            $("#tab5box3").click(function (e) {
+              if ( $("#tab5box3").prop("checked") ){
+                num[0] = '1';
+              } else {
+                num[0] = '0';
+              }
+            });
+            $("#tab5box4").click(function (e) {
+              if ( $("#tab5box4").prop("checked") ){
+                num[1] = '1';
+              } else {
+                num[1] = '0';
+              }
+            });
+            $("#tab5box5").click(function (e) {
+              if ( $("#tab5box5").prop("checked") ){
+                num[2] = '1';
+              } else {
+                num[2] = '0';
+              }
+            });
+            $("#tab5box6").click(function (e) {
+              if ( $("#tab5box6").prop("checked") ){
+                num[3] = '1';
+              } else {
+                num[3] = '0';
+              }
+            });
+            $("#tab5box7").click(function (e) {
+              if ( $("#tab5box7").prop("checked") ){
+                num[4] = '1';
+              } else {
+                num[4] = '0';
+              }
+            });
+            $("#tab5box8").click(function (e) {
+              if ( $("#tab5box8").prop("checked") ){
+                num[5] = '1';
+              } else {
+                num[5] = '0';
+              }
+            });
+            $("#tab5box9").click(function (e) {
+              if ( $("#tab5box9").prop("checked") ){
+                num[6] = '1';
+              } else {
+                num[6] = '0';
+              }
+            });
+          });
+          </script>
+          <div class="checkbox3">
+            <form name="tab5">
+              <div class="tab5box3">
+                <label>
+                  <input type="radio" name="tab5btn3" id="tab5box10">
+                  <span> ChangaOne</span>
+                </label>
+              </div>
+              <div class="tab5box3">
+                <label>
+                  <input type="radio" name="tab5btn3" id="tab5box11">
+                  <span> Iceland</span>
+                </label>
+              </div>
+              <div class="tab5box3">
+                <label>
+                  <input type="radio" name="tab5btn3" id="tab5box12">
+                  <span> JosefinSans</span>
+                </label>
+              </div>
+              <div class="tab5box3">
+                <label>
+                  <input type="radio" name="tab5btn3" id="tab5box13">
+                  <span> Montserrat</span>
+                </label>
+              </div>
+            </form>
+          </div>
+          <script>
+          $(function() {
+            $('input[name="tab5btn3"]:radio').change( function() {
+              if($('input[id=tab5box10]').prop('checked')){
+                $('.digitalclock2').fadeOut();
+                $('.digitalclock3').fadeOut();
+                $('.digitalclock4').fadeOut();
+                $('.digitalclock1').fadeIn();
+              } else if ($('input[id=tab5box11]').prop('checked')) {
+                $('.digitalclock1').fadeOut();
+                $('.digitalclock3').fadeOut();
+                $('.digitalclock4').fadeOut();
+                $('.digitalclock2').fadeIn();
+              } else if ($('input[id=tab5box12]').prop('checked')) {
+                $('.digitalclock1').fadeOut();
+                $('.digitalclock2').fadeOut();
+                $('.digitalclock4').fadeOut();
+                $('.digitalclock3').fadeIn();
+              } else if ($('input[id=tab5box13]').prop('checked')) {
+                $('.digitalclock1').fadeOut();
+                $('.digitalclock2').fadeOut();
+                $('.digitalclock3').fadeOut();
+                $('.digitalclock4').fadeIn();
+              }
+            });
+          });
+          </script>
+          <div class="button">
+            <p><a href="#" class="btn-square" type="button" onclick="tab5onclick()">OK</a></p>
+          </div>
+          <script>
+          function tab5onclick(){
+            if($('input[id=tab5box1]').prop('checked')){
+              if($('input[id=tab5box14]').prop('checked')){
+                ipcRenderer.send('tab5request1', '1,'+num+',1');
+              } else if($('input[id=tab5box15]').prop('checked')){
+                ipcRenderer.send('tab5request1', '1,'+num+',2');
+              } else if($('input[id=tab5box16]').prop('checked')){
+                ipcRenderer.send('tab5request1', '1,'+num+',3');
+              }
+            } else if($('input[id=tab5box2]').prop('checked')){
+              if($('input[id=tab5box10]').prop('checked')){
+                ipcRenderer.send('tab5request1', '2,'+num+',1');
+              } else if($('input[id=tab5box11]').prop('checked')){
+                ipcRenderer.send('tab5request1', '2,'+num+',2');
+              } else if($('input[id=tab5box12]').prop('checked')){
+                ipcRenderer.send('tab5request1', '2,'+num+',3');
+              } else if($('input[id=tab5box13]').prop('checked')){
+                ipcRenderer.send('tab5request1', '2,'+num+',4');
+              }
+            }
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+    <div class="tab_content" id="tab6_content">
+      <div class="tab_content_description">
+        <div class="tab6">
+          <form name="tab6">
+            <!-- <div class="checkbox1">
+            <div class="tab6box1">
+            <label>
+            <input type="checkbox" name="tab6box1" id="tab6box1">
+            <span> Title</span>
+          </label>
+        </div>
+      </div> -->
+      <!-- <div class="checkbox2">
+      <div class="tab6box2">
+      <input type="text" name="tab6box2" id="tab6box2" value="" placeholder="Graduation Ceremony">
+    </div>
+  </div> -->
+  <div class="checkbox3">
+    <div class="tab6box3">
+      <label>
+        <input type="checkbox" name="tab6box3" id="tab6box3">
+        <span> TimeLimit</span>
+      </label>
+    </div>
+  </div>
+  <div class="checkbox4">
+    <div class="tab6box4">
+      <input type="datetime-local" name="tab6box4" id="tab6box4" value="" >
+    </div>
+  </div>
+  <!-- <div class="checkbox5">
+  <div class="tab6box5">
+  <label>
+  <input type="radio" name="tab6box5" id="tab6box5">
+  <span> ChangaOne</span>
+</label>
+</div>
+<div class="tab6box5">
+<label>
+<input type="radio" name="tab6box5" id="tab6box6">
+<span> Iceland</span>
+</label>
+</div>
+<div class="tab6box5">
+<label>
+<input type="radio" name="tab6box5" id="tab6box7">
+<span> JosefinSans</span>
+</label>
+</div>
+<div class="tab6box5">
+<label>
+<input type="radio" name="tab6box5" id="tab6box8">
+<span> Montserrat</span>
+</label>
+</div>
+</div> -->
+<div class="checkbox6">
+  <div class="tab6box6">
+    <label>
+      <!-- <input type="checkbox" name="tab6btn6" id="tab6box9">
+      <span> RuledLine</span> -->
+      <input type="color" name="tab6btn7" id="tab6box10" value="#98fb98">
+      <span> Color</span>
+    </label>
+  </div>
+</form>
+</div>
+<div class="button">
+  <span><a href="#" class="btn-square" type="button" onclick="tab6onclick()">OK</a></span>
+</div>
+</div>
+<script>
+$(function(){
+  $("#tab6box1").click(function (e) {
+    if ( $("#tab6box1").prop("checked") ){
+      $('.tab6box2').fadeIn();
+    } else {
+      $('.tab6box2').fadeOut();
+    }
+  });
+  $("#tab6box3").click(function (e) {
+    if ( $("#tab6box3").prop("checked") ){
+      $('.tab6box4').fadeIn();
+    } else {
+      $('.tab6box4').fadeOut();
+    }
+  });
+});
+</script>
+<script>
+function tab6onclick(){
+  if ( $("#tab6box1").prop("checked") ){
+    var tab6str1 = document.tab6.tab6box2.value;
+  } else {
+    var tab6str1 = 'false';
+  }
+  if ( $("#tab6box3").prop("checked") ){
+    var tab6str2 = document.tab6.tab6box4.value;
+  } else {
+    var tab6str2 = 'false';
+  }
+  if ( $("#tab6box5").prop("checked") ){
+    var tab6str3 = '1';
+  } else if ( $("#tab6box6").prop("checked") ){
+    var tab6str3 = '2';
+  } else if ( $("#tab6box7").prop("checked") ){
+    var tab6str3 = '3';
+  } else if ( $("#tab6box8").prop("checked") ){
+    var tab6str3 = '4';
+  } else {
+    var tab6str3 = 'false';
+  }
+  if ( $("#tab6box9").prop("checked") ){
+    var tab6str4 = 'true';
+  } else {
+    var tab6str4 = 'false';
+  }
+  var tab6str5 = document.tab6.tab6box10.value;
+  ipcRenderer.send('tab6request1', tab6str1 + "," + tab6str2 + "," + tab6str3 + "," + tab6str4 + "," + tab6str5);
+}
+</script>
+</div>
+</div>
+<div class="tab_content" id="tab7_content">
+  <div class="tab_content_description">
+    <div class="tab7">
+      <div class="image1">
+        <!-- <button type="button" id="tab7btn1"><img src="postit.png" style="height:100px; margin: 10px 10px 10px 10px;"></button> -->
+        <button type="button" id="tab7btn2"><img src="calc.png"   style="height:100px; margin: 10px 10px 10px 10px;"></button>
+        <button type="button" id="tab7btn3"><img src="kinoko.png" style="height:100px; margin: 10px 10px 10px 10px;"></button>
+        <!-- </div>
+        <div class="image2"> -->
+        <button type="button" id="tab7btn4"><img src="sumo.png"    style="height:100px; margin: 10px 10px 10px 10px;"></button>
+        <button type="button" id="tab7btn5"><img src="gas.png"     style="height:100px; margin: 10px 10px 10px 10px;"></button>
+        <button type="button" id="tab7btn6"><img src="sakura.png"  style="height:100px; margin: 10px 10px 10px 10px;"></button>
+      </div>
+      <script type="text/javascript">
+      $(document).ready(function () {
+        $("#tab7btn1").on('click', function () {
+        });
+        $("#tab7btn2").on('click', function () {
+        });
+        $("#tab7btn3").on('click', function () {
+        });
+        $("#tab7btn4").on('click', function () {
+        });
+        $("#tab7btn5").on('click', function () {
+        });
+        $("#tab7btn6").on('click', function () {
+        });
+      })
+      </script>
+    </div>
+  </div>
+</div>
+<div class="tab_content" id="tab8_content">
+  <div class="tab_content_description">
+  </div>
+</div>
+</div>
+</body>
+</html>

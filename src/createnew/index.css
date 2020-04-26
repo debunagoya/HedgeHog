@@ -1,0 +1,653 @@
+body {
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+/* タブ全般 */
+.tabs {
+  padding-bottom: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+.tabs .tab_item {
+  width: calc(100%/3);
+  height: 50px;
+  /* border-bottom: 3px solid #5ab4bd; */
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tabs .tab_item:hover {
+  opacity: 0.75;
+}
+.tabs input[name="tab_item"] {
+  display: none;
+}
+.tabs .tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+#tab1:checked ~ #tab1_content,
+#tab2:checked ~ #tab2_content,
+#tab3:checked ~ #tab3_content,
+#tab4:checked ~ #tab4_content,
+#tab5:checked ~ #tab5_content,
+#tab6:checked ~ #tab6_content,
+#tab7:checked ~ #tab7_content,
+#tab8:checked ~ #tab8_content{
+  display: block;
+}
+.tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+}
+
+/* タブ1 */
+.tab1 input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+}
+.tab1 .button {
+  margin-top : 7.5%;
+  text-align : center;
+}
+.tab1 .btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5ab4bd;
+  color: #FFF;
+  border-bottom: solid 4px #808080;
+  border-radius: 3px;
+}
+.tab1 .btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.tab1 button {
+  margin-left: 1.5%;
+  margin-bottom: 1.5%;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.tab1 .image1 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 .image2 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 .image3 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 input[type="checkbox"] {
+  opacity:0;
+}
+.tab1 input[type="checkbox"] + span::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: .5rem;
+}
+.tab1 input[type="checkbox"]:checked + span::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+.tab1 input[type="checkbox"]:focus + span::before {
+  border-color: #0bd;
+}
+.tab1 .checkbox1 {
+  display: flex;
+  font-size: 22px;
+  justify-content: center;
+}
+.tab1 .tab1box1 {
+  float: left;
+}
+.tab1 .tab1box2 {
+  float: left;
+}
+
+/* タブ2 */
+.tab2 input {
+  width: 100%; /*親要素いっぱい広げる*/
+  padding: 10px 15px; /*ボックスを大きくする*/
+  font-size: 16px;
+  border-radius: 3px; /*ボックス角の丸み*/
+  border: 2px solid #ddd; /*枠線*/
+  box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+.tab2 .button {
+  margin-top : 7.5%;
+  text-align : center;
+}
+.tab2 .btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5ab4bd;
+  color: #FFF;
+  border-bottom: solid 4px #808080;
+  border-radius: 3px;
+}
+.tab2 .btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.tab2 input[type="checkbox"] {
+  opacity:0;
+}
+.tab2 input[type="checkbox"] + span::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: .5rem;
+}
+.tab2 input[type="checkbox"]:checked + span::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+.tab2 input[type="checkbox"]:focus + span::before {
+  border-color: #0bd;
+}
+.tab2 .layout {
+  display: flex;
+}
+.tab2 .preview {
+  position: relative;
+}
+.tab2 .preview .text {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: calc(50% - 32px);
+  text-align: center;
+  color: #696969;
+  font-weight: bold;
+  line-height: 50px;
+  font-size: 48px;
+}
+.tab2 .preview {
+  margin-top: 7.5%;
+  margin-left: 5%;
+}
+.tab2 .cpu {
+  margin-left: 10%;
+  font-size: 28px;
+}
+
+/* タブ3 */
+.tab3 input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+}
+.tab3 .button {
+  margin-top : 7.5%;
+  text-align : center;
+}
+.tab3 .btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5ab4bd;
+  color: #FFF;
+  border-bottom: solid 4px #808080;
+  border-radius: 3px;
+}
+.tab3 .btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.tab3 .github {
+  position: relative;
+}
+.tab3 .github .text {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: calc(50% - 35px);
+  text-align: center;
+  color: #696969;
+  font-weight: bold;
+  line-height: 50px;
+  font-size: 48px;
+}
+
+/* タブ4 */
+.tab4 .japan_map{
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: table;
+}
+.tab4 .japan_map img{
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  -webkit-backface-visibility: hidden;
+}
+.tab4 .japan_map .area_btn{
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 3px solid #333333;
+  border-radius: 5px;
+  background-color: #FFF;
+  padding: 0.2em auto;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+.tab4 .japan_map .area_btn.area1{
+  top: 30%;
+  right: 0;
+  width: 30%;
+}
+.tab4 .japan_map .area_btn.area2{
+  top: 58%;
+  right: 11%;
+  width: 13%;
+}
+.tab4 .japan_map .area_btn.area3{
+  top: 56%;
+  right: 27.5%;
+  width: 13%;
+}
+.tab4 .japan_map .area_btn.area4{
+  top: 65%;
+  right: 44%;
+  width: 13%;
+}
+.tab4 .japan_map .area_btn.area5{
+  top: 52%;
+  left: 20%;
+  width: 25%;
+}
+.tab4 .japan_map .area_btn.area6{
+  top: 70%;
+  left: 0;
+  width: 25%;
+}
+/* オーバーレイ */
+.tab4 .japan_map .area_overlay{
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  background-color: #FFF;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.tab4 .japan_map .pref_area{
+  display: none;
+}
+.tab4 .japan_map .pref_list{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  z-index: 3;
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 90%;
+  background-color: #FFF;
+}
+.tab4 .japan_map .pref_list > div{
+  box-sizing: border-box;
+  width: 50%;
+  border: 1px solid #CCC;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+/* タブ5 */
+.tab5 .checkbox1 {
+  display: flex;
+  font-size: 22px;
+  justify-content: center;
+}
+.tab5 .checkbox2 {
+  display: flex;
+  font-size: 22px;
+  justify-content: center;
+}
+.tab5 .checkbox3 {
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+}
+.tab5 .checkbox4 {
+  display: flex;
+  font-size: 22px;
+  justify-content: center;
+}
+.tab5 .tab5box1 {
+  float: left;
+}
+.tab5 .tab5box2 {
+  float: left;
+  display: none;
+}
+.tab5 .tab5box3 {
+  float: left;
+  display: none;
+}
+.tab5 .tab5box4 {
+  float: left;
+  display: none;
+}
+.tab5 input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+}
+.tab5 .button {
+  margin-top : 7.5%;
+  text-align : center;
+}
+.tab5 .btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5ab4bd;
+  color: #FFF;
+  border-bottom: solid 4px #808080;
+  border-radius: 3px;
+}
+.tab5 .btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.tab5 input[type="checkbox"] {
+  opacity:0;
+}
+.tab5 input[type="checkbox"] + span::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: .5rem;
+}
+.tab5 input[type="checkbox"]:checked + span::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+.tab5 input[type="checkbox"]:focus + span::before {
+  border-color: #0bd;
+}
+.tab5 input[type="radio"] {
+  opacity:0;
+}
+.tab5 input[type="radio"] + span::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: .5rem;
+}
+.tab5 input[type="radio"]:checked + span::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+.tab5 input[type="radio"]:focus + span::before {
+  border-color: #0bd;
+}
+.tab5 .tab5analogclock {
+  display: flex;
+  justify-content: center;
+}
+.tab5 .tab5analogclock1 {
+  display: none;
+}
+.tab5 .tab5analogclock2 {
+  display: none;
+}
+.tab5 .tab5analogclock3 {
+  display: none;
+}
+.tab5 .analogclock1 {
+  position: absolute;
+}
+.tab5 #analogclock1 {
+  display: block;
+}
+.tab5 .analogclock2 {
+  position: absolute;
+}
+.tab5 #analogclock2 {
+  display: block;
+}
+.tab5 .analogclock3 {
+  position: absolute;
+}
+.tab5 #analogclock3 {
+  display: block;
+}
+.tab5 .tab5digitalclock {
+  display: flex;
+  justify-content: center;
+}
+.tab5 .digitalclock1 {
+  font-family: 'Changa One', cursive;
+  font-size: 2em;
+  display: none;
+}
+.tab5 .digitalclock2 {
+  font-family: 'Iceland', cursive;
+  font-size: 2em;
+  display: none;
+}
+.tab5 .digitalclock3 {
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-size: 2em;
+  display: none;
+}
+.tab5 .digitalclock4 {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 2em;
+  display: none;
+}
+
+/* タブ6 */
+.tab6 input[type="checkbox"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+  opacity:0;
+}
+.tab6 input[type="radio"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+  opacity:0;
+}
+.tab6 input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+}
+.tab6 input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+}
+.tab6 input[type="color"] {
+  margin-top: 25px;
+  /* margin-left: 25px; */
+}
+.tab6 .button {
+  margin-top : 7.5%;
+  text-align : center;
+}
+.tab6 .btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5ab4bd;
+  color: #FFF;
+  border-bottom: solid 4px #808080;
+  border-radius: 3px;
+}
+.tab6 button {
+  margin-left: 1.5%;
+  margin-bottom: 1.5%;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.tab6 .btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.tab6 input[type="checkbox"] + span::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: .5rem;
+}
+.tab6 input[type="checkbox"]:checked + span::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+.tab6 input[type="checkbox"]:focus + span::before {
+  border-color: #0bd;
+}
+.tab6 .tab6box1 {
+  float: left;
+}
+.tab6 .tab6box2 {
+  /* float: left; */
+  display: none;
+}
+.tab6 .tab6box3 {
+  float: left;
+}
+.tab6 .tab6box4 {
+  display: none;
+}
+.tab6 .tab6box5 {
+  float: left;
+}
+.tab6 .tab6box6 {
+  float: left;
+}
+.tab6 .checkbox1 {
+  display: flex;
+  font-size: 20px;
+}
+.tab6 .checkbox3 {
+  display: flex;
+  font-size: 20px;
+}
+.tab6 .checkbox5 {
+  display: flex;
+  font-size: 20px;
+}
+.tab6 .checkbox6 {
+  display: flex;
+  font-size: 20px;
+}
+.tab6 input[type="radio"] + span::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: .5rem;
+}
+.tab6 input[type="radio"]:checked + span::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+.tab6 input[type="radio"]:focus + span::before {
+  border-color: #0bd;
+}
+
+/* タブ7 */
+.tab7 button {
+  margin-left: 1.5%;
+  margin-bottom: 1.5%;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.tab7 .image1 {
+  display: flex;
+  justify-content: center;
+}
+.tab7 .image2 {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+<body>
+  <div class="tabs">
+    <input id="tab1" type="radio" name="tab_item" checked>
+    <label class="tab_item" for="tab1">WallPaper</label>
+    <div class="tab_content" id="tab1_content">
+      <div class="tab_content_description">
+        <div class="tab1">
+          <div class="image1">
+            <button type="button" id="btn1" onClick="tab1onclick(1)"><img src="wp1.png" style="height:75px;"></button>
+            <button type="button" id="btn2" onClick="tab1onclick(2)"><img src="wp2.png" style="height:75px;"></button>
+            <button type="button" id="btn3" onClick="tab1onclick(3)"><img src="wp3.png" style="height:75px;"></button>
+            <button type="button" id="btn4" onClick="tab1onclick(4)"><img src="wp4.png" style="height:75px;"></button>
+          </div>
+          <div class="image2">
+            <button type="button" id="btn5" onClick="tab1onclick(5)"><img src="wp5.png" style="height:75px;"></button>
+            <button type="button" id="btn6" onClick="tab1onclick(6)"><img src="wp6.png" style="height:75px;"></button>
+            <button type="button" id="btn7" onClick="tab1onclick(7)"><img src="wp7.png" style="height:75px;"></button>
+            <button type="button" id="btn8" onClick="tab1onclick(8)"><img src="wp8.png" style="height:75px;"></button>
+          </div>
+          <div class="image3">
+            <button type="button" id="btn9" onClick="tab1onclick(9)"><img src="wp9.png" style="height:75px;"></button>
+            <button type="button" id="btn10" onClick="tab1onclick(10)"><img src="wp10.png" style="height:75px;"></button>
+            <button type="button" id="btn11" onClick="tab1onclick(11)"><img src="wp11.png" style="height:75px;"></button>
+            <button type="button" id="btn12" onClick="tab1onclick(12)"><img src="wp12.png" style="height:75px;"></button>
+          </div>
+          <div class="image4">
+            <button type="button" id="btn13" onClick="tab1onclick(13)"><img src="wp13.png" style="height:75px;"></button>
+            <button type="button" id="btn14" onClick="tab1onclick(14)"><img src="wp14.png" style="height:75px;"></button>
+            <button type="button" id="btn15" onClick="tab1onclick(15)"><img src="wp15.png" style="height:75px;"></button>
+            <button type="button" id="btn16" onClick="tab1onclick(16)"><img src="wp16.png" style="height:75px;"></button>
+          </div>
+          <div class="image5">
+            <button type="button" id="btn17" onClick="tab1onclick(17)"><img src="wp17.png" style="height:75px;"></button>
+            <button type="button" id="btn18" onClick="tab1onclick(18)"><img src="wp18.png" style="height:75px;"></button>
+            <button type="button" id="btn19" onClick="tab1onclick(19)"><img src="wp19.png" style="height:75px;"></button>
+            <button type="button" id="btn20" onClick="tab1onclick(20)"><img src="wp20.png" style="height:75px;"></button>
+          </div>
+          <div class="image6">
+            <button type="button" id="btn21" onClick="tab1onclick(21)"><img src="wp21.png" style="height:75px;"></button>
+            <button type="button" id="btn22" onClick="tab1onclick(22)"><img src="wp22.png" style="height:75px;"></button>
+            <button type="button" id="btn23" onClick="tab1onclick(23)"><img src="wp23.png" style="height:75px;"></button>
+            <button type="button" id="btn24" onClick="tab1onclick(24)"><img src="wp24.png" style="height:75px;"></button>
+          </div>
+          <script>
+          const {ipcRenderer} = window.native;
+          function tab1onclick(i){
+            ipcRenderer.send('settingrequest1', 'wp' + i + '.png');
+          }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

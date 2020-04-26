@@ -1,0 +1,116 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+  google.charts.load('current', {'packages':['gauge']});
+  google.charts.setOnLoadCallback(drawChart);
+  const {ipcRenderer} = window.native;
+  function drawChart() {
+    var options = {
+      redFrom: 90, redTo: 100,
+      yellowFrom:75, yellowTo: 90,
+      minorTicks: 5
+    };
+    var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+    var data = null;
+    ipcRenderer.on('tab2renderer2', (event, arg1) => {
+      switch(arg1){
+        case '0001': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0]]); break;
+        case '0010': data = google.visualization.arrayToDataTable([['Label', 'Value'],['Memory', 0]]); break;
+        case '0011': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0],['Memory', 0]]); break;
+        case '0100': data = google.visualization.arrayToDataTable([['Label', 'Value'],['Battery', 0]]); break;
+        case '0101': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0],['Battery', 0]]); break;
+        case '0110': data = google.visualization.arrayToDataTable([['Label', 'Value'],['Memory', 0],['Battery', 0]]); break;
+        case '0111': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0],['Memory', 0],['Battery', 0]]); break;
+        case '1000': data = google.visualization.arrayToDataTable([['Label', 'Value'],['Temp', 0]]); break;
+        case '1001': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0],['Temp', 0]]); break;
+        case '1010': data = google.visualization.arrayToDataTable([['Label', 'Value'],['Memory', 0],['Temp', 0]]); break;
+        case '1011': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0],['Memory', 0],['Temp', 0]]); break;
+        case '1100': data = google.visualization.arrayToDataTable([['Label', 'Value'],['Battery', 0],['Temp', 0]]); break;
+        case '1101': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0],['Battery', 0],['Temp', 0]]); break;
+        case '1110': data = google.visualization.arrayToDataTable([['Label', 'Value'],['Memory', 0],['Battery', 0],['Temp', 0]]); break;
+        case '1111': data = google.visualization.arrayToDataTable([['Label', 'Value'],['CPU', 0],['Memory', 0],['Battery', 0],['Temp', 0]]); break;
+      }
+      chart.draw(data, options);
+    });
+    // ipcRenderer.send('tab2request2', 'ping1');
+    setInterval(function() {
+      ipcRenderer.on('tab2renderer3', (event, arg2) => {
+        var res = arg2.split(",");
+        switch(String(res[0])){
+          case '1' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          break;
+          case '2' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          break;
+          case '3' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          break;
+          case '4' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          break;
+          case '5' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          break;
+          case '6' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          break;
+          case '7' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          data.setValue(2, 1, Math.round(Number(res[3])));
+          break;
+          case '8' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          break;
+          case '9' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          break;
+          case '10' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          break;
+          case '11' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          data.setValue(2, 1, Math.round(Number(res[3])));
+          break;
+          case '12' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          break;
+          case '13' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          data.setValue(2, 1, Math.round(Number(res[3])));
+          break;
+          case '14' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          data.setValue(2, 1, Math.round(Number(res[3])));
+          break;
+          case '15' :
+          data.setValue(0, 1, Math.round(Number(res[1])));
+          data.setValue(1, 1, Math.round(Number(res[2])));
+          data.setValue(2, 1, Math.round(Number(res[3])));
+          data.setValue(3, 1, Math.round(Number(res[4])));
+          break;
+        }
+        chart.draw(data, options);
+      });
+      ipcRenderer.send('tab2request3','ping');
+    }, 3000);
+  }
+  </script>
+</head>
+<body>
+  <div id="chart_div" style="height: 100%;"></div>
+</body>
+</html>

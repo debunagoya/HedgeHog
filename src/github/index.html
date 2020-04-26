@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script>
+    const { ipcRenderer } = window.native;
+    ipcRenderer.on('tab3renderer2', (event, arg) => {
+      var res = arg.split(',');
+      document.getElementById("github").src = 'https://grass-graph.moshimo.works/images/' + res[0] + '.png';
+    });
+  </script>
+</head>
+
+<body>
+  <div class="github">
+    <img src="https://grass-graph.moshimo.works/images/debudagaya.png" width="100%" id="github">
+  </div>
+</body>
+
+</html>

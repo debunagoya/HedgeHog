@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <script>
+  const webFrame = window.native;
+  webFrame.setZoomLevelLimits(1,1);
+  </script>
+  <script>
+  const {ipcRenderer} = window.native;
+  ipcRenderer.on('settingrenderer2', (event, arg) => {
+    document.body.style.backgroundImage = 'url(setting/' + arg + ')';
+  });
+  </script>
+</head>
+<body>
+</body>
+</html>

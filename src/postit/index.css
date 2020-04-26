@@ -1,0 +1,56 @@
+.tab6digitalclock {
+  position: fixed;
+  right : 5px;
+  font-size: 15px;
+}
+/* .digitalclock1 {
+  font-family: 'Changa One', cursive;
+} */
+html,body {
+  height:100%; margin:0;
+  background-color: #ffffff;
+}
+.fix-height {
+  box-sizing: border-box;
+  height: 100%;
+}
+.fix-width {
+  box-sizing: border-box;
+  width: 100%;
+}
+.editor {
+  margin: 0;
+  padding: 0 0 20px;
+}
+.informations {
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.informations input {
+  height: 30px;
+}
+.main {
+  height: 100%;
+}
+input {
+  border: none;
+}
+textarea {
+  border: none;
+  outline: none;
+  font-size: 15pt;
+}
+#body {
+  resize: none;
+}
+.status {
+  bottom: 0;
+  height: 20px;
+  left: 0;
+  line-height: 16px;
+  padding: 2px 4px;
+  position: absolute;
+  width: 100%;
+}

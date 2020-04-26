@@ -1,0 +1,136 @@
+body {
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+/* タブ全般 */
+.tabs {
+  padding-bottom: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+.tabs .tab_item {
+  width: calc(100%/1);
+  height: 50px;
+  /* border-bottom: 3px solid #5ab4bd; */
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tabs .tab_item:hover {
+  opacity: 0.75;
+}
+.tabs input[name="tab_item"] {
+  display: none;
+}
+.tabs .tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+#tab1:checked ~ #tab1_content,
+#tab2:checked ~ #tab2_content,
+#tab3:checked ~ #tab3_content,
+#tab4:checked ~ #tab4_content,
+#tab5:checked ~ #tab5_content,
+#tab6:checked ~ #tab6_content,
+#tab7:checked ~ #tab7_content,
+#tab8:checked ~ #tab8_content{
+  display: block;
+}
+.tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+}
+
+/* タブ1 */
+.tab1 input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+}
+.tab1 .button {
+  margin-top : 7.5%;
+  text-align : center;
+}
+.tab1 .btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5ab4bd;
+  color: #FFF;
+  border-bottom: solid 4px #808080;
+  border-radius: 3px;
+}
+.tab1 .btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.tab1 button {
+  margin-left: 1.5%;
+  margin-bottom: 1.5%;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.tab1 .image1 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 .image2 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 .image3 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 .image4 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 .image5 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 .image6 {
+  display: flex;
+  justify-content: center;
+}
+.tab1 input[type="checkbox"] {
+  opacity:0;
+}
+.tab1 input[type="checkbox"] + span::before {
+  display: inline-block;
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: .5rem;
+}
+.tab1 input[type="checkbox"]:checked + span::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 2px;
+}
+.tab1 input[type="checkbox"]:focus + span::before {
+  border-color: #0bd;
+}
+.tab1 .mute {
+  display: flex;
+  font-size: 22px;
+  justify-content: center;
+}
