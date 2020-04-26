@@ -1,13 +1,33 @@
 # HedgeHog
 
 ## NEW FEATURE & BUGFIX
-- 2020/04/05
+- 2020/04/12 (v1.0.4)
+  - Fixed Bug of OAuth
+  - Added Function of Display Selection  
+- 2020/04/11 (v1.0.3)
+  - Added Function of Reset
+- 2020/04/09 (v1.0.2)
+  - Modified Config Files
+  - Modified Bash Shell
+- 2020/04/07 (v1.0.1)
+  - Prohibit ZoomIn or ZoomOut in MainWindow
+  - Extension of ToolBar
+  - Modified CallBack Function
+  - GoogleOauth Implementation
+  - Modified Sync and Size of SystemLog
+  - Added Logo in MainPage
+- 2020/04/05 (v1.0.0)
   - First Commit
 
 ## FUTURE PLAN
-- [ ] Google OAuth 
+- [x] Google OAuth 
+- [x] Develop Server of Forecast
 - [ ] Function of Wall Paper Selection  
-- [ ] Function of Display Selection  
+- [x] Function of Display Selection  
+
+## LAYOUT
+|<img src="https://user-images.githubusercontent.com/51310989/79071380-64ac7e00-7d16-11ea-9be1-271b4224296f.png">|<img src="https://user-images.githubusercontent.com/51310989/79071420-9faeb180-7d16-11ea-8769-6178e07581c1.png">|
+|:---------|------------------:|
 
 ## USAGE
 ```
