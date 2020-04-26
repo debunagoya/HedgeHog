@@ -1,6 +1,8 @@
 # HedgeHog
 
 ## NEW FEATURE & BUGFIX
+- 2020/04/24 (v1.0.5)
+  - Fixed Bug of Browser
 - 2020/04/12 (v1.0.4)
   - Fixed Bug of OAuth
   - Added Function of Display Selection  
